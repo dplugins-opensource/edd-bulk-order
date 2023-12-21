@@ -14,6 +14,6 @@ After you press submit orders will be created.
 
 ## Created Orders 
 
-* Status complete
-* Price will be set to 0
-* Payment method manual (store gateway)
+*   Status complete
+*   Price will be set to 0
+*   Payment method manual (store gateway)
