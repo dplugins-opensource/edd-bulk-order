@@ -2,6 +2,7 @@
 
 I needed simple option to add free downloads to the multiple people at once. 
 
+<img width="601" alt="Screenshot 2023-12-21 at 22 00 09" src="https://github.com/dplugins-opensource/edd-bulk-order/assets/1234350/03c7414f-2cd9-4013-b656-afc59ef9458b">
 
 
 ## How to use it
