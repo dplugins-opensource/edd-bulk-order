@@ -29,7 +29,7 @@ function edd_bulk_order_page()
 
 ?>
     <style>
-        #email_addresses {
+        #email_addresses, select {
             min-width: 500px;
         }
     </style>
