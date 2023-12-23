@@ -3,15 +3,13 @@
 /**
  * Plugin Name: EDD Bulk Order
  * Description: A plugin to submit multiple orders at once for Easy Digital Downloads.
- * Version: 1.0
+ * Version: 1.0.2
  * Author: Marko Krstic
  */
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
-
-add_action('admin_menu', 'edd_bulk_order_menu');
 
 function edd_bulk_order_menu()
 {
@@ -20,8 +18,45 @@ function edd_bulk_order_menu()
         return; // Exit the function if the user is not an admin.
     }
 
-    add_menu_page('EDD Bulk Order', 'EDD Bulk Order', 'manage_options', 'edd-bulk-order', 'edd_bulk_order_page');
+    add_submenu_page(
+        'edit.php?post_type=download', // Parent slug (EDD main menu)
+        'Bulk Order',              // Page title
+        'Bulk Order',              // Menu title
+        'manage_options',              // Capability
+        'edd-bulk-order',              // Menu slug
+        'edd_bulk_order_page'          // Function to display the page content
+    );
 }
+add_action('admin_menu', 'edd_bulk_order_menu');
+
+function reorder_edd_submenus()
+{
+    global $submenu;
+
+    // Check if the EDD menu exists.
+    if (isset($submenu['edit.php?post_type=download'])) {
+
+        // Define your submenu slug.
+        $bulk_order_slug = 'edd-bulk-order';
+
+        // Find and remove the submenu item.
+        foreach ($submenu['edit.php?post_type=download'] as $key => $item) {
+            if ($item[2] === $bulk_order_slug) {
+                $bulk_order_menu = $submenu['edit.php?post_type=download'][$key];
+                unset($submenu['edit.php?post_type=download'][$key]);
+                break;
+            }
+        }
+
+        // Re-add the submenu item.
+        if (isset($bulk_order_menu)) {
+            $submenu['edit.php?post_type=download'][] = $bulk_order_menu;
+        }
+    }
+}
+add_action('admin_menu', 'reorder_edd_submenus', 999999); // High priority to ensure it runs last
+
+
 
 function edd_bulk_order_page()
 {

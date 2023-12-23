@@ -17,3 +17,15 @@ After you press submit orders will be created.
 *   Status complete
 *   Price will be set to 0
 *   Payment method manual (store gateway)
+
+
+# Changelog
+
+1.0.2
+* Moved menu under EDD as Submenu
+
+1.0.1
+* Chekc if user is admin
+
+1.0.0
+* Release
