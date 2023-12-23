@@ -12,6 +12,10 @@ I needed simple option to add downloads for free to the multiple people at once.
 
 After you press submit orders will be created. 
 
+## Location 
+
+Under EDD main menu
+
 ## Created Orders 
 
 *   Status complete
