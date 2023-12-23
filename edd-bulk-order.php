@@ -15,6 +15,11 @@ add_action('admin_menu', 'edd_bulk_order_menu');
 
 function edd_bulk_order_menu()
 {
+    // Check if the current user has the 'administrator' role.
+    if (!current_user_can('administrator')) {
+        return; // Exit the function if the user is not an admin.
+    }
+
     add_menu_page('EDD Bulk Order', 'EDD Bulk Order', 'manage_options', 'edd-bulk-order', 'edd_bulk_order_page');
 }
 
